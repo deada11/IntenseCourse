@@ -10,7 +10,11 @@
     function send_message() {
         let name = $("#name").val();
         let text = $("#text").val();
-        $.get("/send", { "name": name, "text": text });
+        $.get("/send", { "name": name, "text": text }, (data) => {
+            if (data == "ERROR") {
+                alert("Проверьте длину сообщения!");
+            }
+        });
     }
     function load_data() {
         $.get("/get_messages", (data) => {
@@ -20,7 +24,7 @@
                 var name=messages[i]["name"];
                 var text=messages[i]["text"];
                 var time=messages[i]["time"];
-                var html = "<div> [<b>"+name+"</b>]: "+ text + "<i>" + time + "</i></div>";
+                var html = "<div> [<b>"+name+"</b>]: "+ text + " <i>" + time + "</i></div>";
                 $("#messages").append($(html));
             }
         });
