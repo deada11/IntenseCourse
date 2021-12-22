@@ -69,6 +69,7 @@ def send_message():
     }
 
     all_messages.append(message)
+    return "OK"
 
 
 app.run()
