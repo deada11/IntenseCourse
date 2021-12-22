@@ -59,7 +59,7 @@ def send_message():
     # Проверки на длину сообщения
     if len(text) < 1:
         return "Текст сообщения не может быть пустым"
-    elif len(text) > 30:
+    elif len(text) > 3000:
         return "Текст сообщения не может превышать 3000 символов"
 
     message = {
